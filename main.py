@@ -14,7 +14,7 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
-    if msg.startswith("sorter run "): return await msg.reply(exec('\n'.join(msg.splitlines()[1::])))
+    if msg.content.startswith("sorter run "): return await msg.reply(exec('\n'.join(msg.content.splitlines()[1::])))
 
     if msg.author == client.user or not any([i in msg.channel.name for i in data['the upload channel gonna contain some of these strings'].split(', ')]): return
     
