@@ -4,4 +4,4 @@ prefix=sorter
 
 the upload channel gonna contain some of these strings=sorte, upload
 
-saves gonna have=meme
+saves gonna have=memew
