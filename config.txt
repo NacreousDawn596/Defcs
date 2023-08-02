@@ -1,4 +1,4 @@
-token=MTEzNjMyNTk1NTQ1NjA5NDM0OA.GhneEN.9U2sWARmfrPlwww47QhTNWDLX_eNlSSLHy0SlE
+token=Ur-token
 
 prefix=sorter 
 
