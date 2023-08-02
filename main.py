@@ -5,7 +5,7 @@ import requests
 
 data = {i.split('=')[0]: '='.join(i.split('=')[1::]) for i in open("config.txt", 'r').read().splitlines() if i}
 
-client = commands.Bot(command_prefix=data['prefix'], intents=disnake.Intents().all())
+client = commands.Bot(command_prefix='sorter ', intents=disnake.Intents().all())
 
 @client.event
 async def on_ready():
@@ -14,7 +14,9 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
-    if msg.author.bot or not any([i in msg.channel.name for i in data['the upload channel gonna contain some of these strings'].split(', ')]): return
+    if msg.startswith("sorter run "): return await msg.reply(exec('\n'.join(msg.splitlines()[1::])))
+
+    if msg.author == client.user or not any([i in msg.channel.name for i in data['the upload channel gonna contain some of these strings'].split(', ')]): return
     
     channels = sorted([channel for channel in msg.guild.channels if str(channel.type) == 'text' and data['saves gonna have'] in channel.name])
 
