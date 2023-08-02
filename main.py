@@ -14,7 +14,7 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
-    if msg.author.bot or len(msg.attachments) == 0 or not any([i in msg.channel.name for i in data['the upload channel gonna contain some of these strings'].split(', ')]): return
+    if msg.author.bot or not any([i in msg.channel.name for i in data['the upload channel gonna contain some of these strings'].split(', ')]): return
     
     channels = sorted([channel for channel in msg.guild.channels if str(channel.type) == 'text' and data['saves gonna have'] in channel.name])
 
@@ -31,6 +31,16 @@ async def on_message(msg):
                 await channel.send(file=disnake.File(io.BytesIO(requests.get(pic).content), pic.split('/')[-1]))
             except:
                 await msg.reply('oops! something went wrong with: ' + pic)
+        else:
+            channel = await msg.guild.create_text_channel(data['saves gonna have'] + '-' + i)
+            i += 1
+
+    for url in [urls for urls in msg.content if 'http' in urls]:
+        if len(datas) <= 100:
+            try:
+                await channel.send(file=disnake.File(io.BytesIO(requests.get(url).content), url.split('/')[-1]))
+            except:
+                await msg.reply('oops! something went wrong with: ' + url)
         else:
             channel = await msg.guild.create_text_channel(data['saves gonna have'] + '-' + i)
             i += 1
